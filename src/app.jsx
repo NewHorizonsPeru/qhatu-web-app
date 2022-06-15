@@ -1,19 +1,10 @@
-import { useState } from 'react';
+import React from 'react';
+import Login from './pages/login';
 
-function App() {
-  let [counter, setCounter] = useState(0);
-  const increase = () => {
-    setCounter(counter + 1);
-  };
-  if (counter === 10) return null;
-
-  return (
-    <div>
-      <input type="text" value={counter} />
-      <br />
-      <input type="button" onClick={increase} value="Incrementar" />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return <Login />;
+  }
 }
 
 export default App;
