@@ -2,6 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app';
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@mui/material/styles';
+import qhatuStore from './core/stores/qhatuStore';
+import qhatuThem from './core/theme/qhatuTheme';
 
-root.render(<App />);
+const container = document.getElementById('app');
+const root = ReactDOM.createRoot(container);
+
+root.render(
+  <Provider store={qhatuStore}>
+    <ThemeProvider theme={qhatuThem}>
+      <App />
+    </ThemeProvider>
+  </Provider>
+);
