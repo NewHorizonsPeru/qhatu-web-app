@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
-const HomeStl = ({ characters, handleClickCharacters }) => {
+const HomeStl = ({ characters }) => {
   return (
     <>
       <>
