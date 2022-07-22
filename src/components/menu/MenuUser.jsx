@@ -5,8 +5,13 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Logout from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
+import { useDispatch } from 'react-redux';
+
+import qhatuActions from '../../core/actions/qhatuActions';
+import TokenService from '../../core/services/TokenService';
 
 const MenuUser = ({ anchorEl, openMyProfile, handleClose }) => {
+  const dispatch = useDispatch();
   return (
     <Menu
       anchorEl={anchorEl}
@@ -50,7 +55,12 @@ const MenuUser = ({ anchorEl, openMyProfile, handleClose }) => {
         <Avatar /> Mi Cuenta
       </MenuItem>
       <Divider />
-      <MenuItem onClick={() => {}}>
+      <MenuItem
+        onClick={() => {
+          TokenService.removeUserData();
+          dispatch(qhatuActions.userDataAction());
+        }}
+      >
         <ListItemIcon>
           <Logout fontSize="small" />
         </ListItemIcon>
