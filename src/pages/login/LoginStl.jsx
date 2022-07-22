@@ -9,7 +9,6 @@ import AlertQhatu from '../../components/alert/AlertQhatu';
 const LoginStl = ({
   refEmail,
   refPassword,
-  handleChangeInput,
   handleClickSignIn,
   alertMessage,
 }) => {
@@ -24,6 +23,7 @@ const LoginStl = ({
           id="txtEmail"
           label="Correo Electronico"
           name="txtEmail"
+          inputRef={refEmail}
           autoFocus
         />
         <TextField
@@ -34,9 +34,11 @@ const LoginStl = ({
           label="Contraseña"
           type="password"
           id="txtPassword"
+          inputRef={refPassword}
         />
         <Button
           type="button"
+          onClick={handleClickSignIn}
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
