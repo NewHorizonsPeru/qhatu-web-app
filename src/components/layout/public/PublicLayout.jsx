@@ -5,10 +5,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useSelector } from 'react-redux';
 
+import ModalQhatu from '../../modal/ModalQhatu';
 import BackdropLoader from '../../loader/BackdropLoader';
 
 const PublicLayout = ({ children }) => {
-  const backdrop = useSelector((state) => state.backdrop);
+  const openBackdrop = useSelector((state) => state.backdrop);
+  const modal = useSelector((state) => state.modal);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -29,7 +31,15 @@ const PublicLayout = ({ children }) => {
         </Typography>
         {children}
       </Box>
-      <BackdropLoader open={backdrop.open} />
+      <BackdropLoader open={openBackdrop.open} />
+      {modal.open ? (
+        <ModalQhatu
+          open={modal.open}
+          callback={modal.callback}
+          title={modal.title}
+          subtitle={modal.subtitle}
+        />
+      ) : null}
     </Container>
   );
 };

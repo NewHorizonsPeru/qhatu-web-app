@@ -29,6 +29,8 @@ const RegisterStl = ({
             id="txtFirstName"
             label="Nombres"
             autoFocus
+            inputRef={refFirstName}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -38,6 +40,8 @@ const RegisterStl = ({
             id="txtLastName"
             label="Apellidos"
             name="txtLastName"
+            inputRef={refLastName}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12}>
@@ -47,6 +51,8 @@ const RegisterStl = ({
             id="txtEmail"
             label="Correo Electronico"
             name="txtEmail"
+            inputRef={refEmail}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12}>
@@ -57,6 +63,8 @@ const RegisterStl = ({
             label="Contraseña"
             type="password"
             id="txtPassword"
+            inputRef={refPassword}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -67,6 +75,9 @@ const RegisterStl = ({
             fullWidth
             id="txtDocumentNumber"
             label="DNI"
+            autoFocus
+            inputRef={refDocumentNumber}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -76,6 +87,8 @@ const RegisterStl = ({
             id="txtPhoneNumber"
             label="Telefono Movil"
             name="txtPhoneNumber"
+            inputRef={refPhoneNumber}
+            onChange={handleChangeInput}
           />
         </Grid>
         <Grid item xs={12}>
@@ -86,10 +99,18 @@ const RegisterStl = ({
             label="Dirección"
             type="text"
             id="txtAddress"
+            inputRef={refAddress}
+            onChange={handleChangeInput}
           />
         </Grid>
       </Grid>
-      <Button type="button" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button
+        type="button"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+        onClick={handleClickSignUp}
+      >
         Registrar
       </Button>
       <Grid container justifyContent="flex-end">
@@ -99,6 +120,8 @@ const RegisterStl = ({
           </Link>
         </Grid>
       </Grid>
+      <br />
+      {alertMessage.open ? <AlertQhatu message={alertMessage.message} /> : null}
     </>
   );
 };

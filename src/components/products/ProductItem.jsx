@@ -7,8 +7,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-
+import { useDispatch } from 'react-redux';
+import qhatuActions from '../../core/actions/globalActions';
 const ProductItem = ({ product }) => {
+  const dispatch = useDispatch();
+  const handleClickAddCart = (id) => {
+    dispatch(qhatuActions.shoppingCartAction(id));
+  };
+
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -22,11 +28,11 @@ const ProductItem = ({ product }) => {
           <Typography variant="body2" color="text.secondary">
             SKU: {product.sku}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {product.category.name}
-          </Typography>
+          {/* <Typography variant="body2" color="text.secondary">
+            {product.category.de}
+          </Typography> */}
           <Typography gutterBottom component="div" height={50}>
-            {product.name}
+            {product.description}
           </Typography>
           <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
             S/. {product.salePrice}
@@ -34,7 +40,7 @@ const ProductItem = ({ product }) => {
         </CardContent>
         <CardActions>
           <Button
-            onClick={() => {}}
+            onClick={() => handleClickAddCart(product.id)}
             sx={{
               display: 'flex',
               flexDirection: 'column',

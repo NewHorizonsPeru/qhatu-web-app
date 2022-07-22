@@ -1,26 +1,30 @@
-import qhatuInstance from '../axios/qhatuInstance';
+import instance from '../axios/instance';
 
 const signIn = async (userToLogin) => {
-  const pathSignIn = process.env.REACT_APP_QHATU_PATH_SIGNIN;
-  console.log(pathSignIn);
+  let pathSignIn = '/security/auth';
+
   try {
-    const authResponse = await qhatuInstance.post(pathSignIn, userToLogin);
+    const authResponse = await instance.post(pathSignIn, userToLogin);
     return {
       success: authResponse.status === 200,
       data: authResponse.data,
     };
-  } catch (error) {}
+  } catch (error) {
+    return {
+      success: false,
+      data: undefined,
+    };
+  }
 };
 
-const signUp = async (userToRegister) => {
-  const pathSignUp = process.env.REACT_APP_QHATU_PATH_SIGNUP;
-  try {
-    const authResponse = await qhatuInstance.post(pathSignUp, userToRegister);
-    return {
-      success: authResponse.status === 200,
-      data: authResponse.data,
-    };
-  } catch (error) {}
+const signUp = async (userToSignUp) => {
+  let pathSignUp = '/security/signUp';
+  const response = await instance.post(pathSignUp, userToSignUp, {});
+
+  return {
+    success: response.status === 200,
+    data: response.data,
+  };
 };
 
 const AuthService = {

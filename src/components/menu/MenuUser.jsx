@@ -6,8 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Logout from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch } from 'react-redux';
-
-import qhatuActions from '../../core/actions/qhatuActions';
+import qhatuActions from '../../core/actions/globalActions';
 import TokenService from '../../core/services/TokenService';
 
 const MenuUser = ({ anchorEl, openMyProfile, handleClose }) => {

@@ -4,10 +4,16 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
+import { useSelector } from 'react-redux';
+
 import AppBarQuatu from '../../appBar/AppBarQuatu';
 import MenuUser from '../../menu/MenuUser';
+import BackdropLoader from '../../loader/BackdropLoader';
+import ModalQhatu from '../../modal/ModalQhatu';
 
 const PrivateLayout = ({ children }) => {
+  const openBackdrop = useSelector((state) => state.backdrop);
+  const modal = useSelector((state) => state.modal);
   const [openMenu, setOpenMenu] = React.useState(false);
   const toggleDrawerMenu = () => {
     setOpenMenu(!openMenu);
@@ -63,6 +69,15 @@ const PrivateLayout = ({ children }) => {
         openMyProfile={openMyProfile}
         handleClose={handleClose}
       />
+      <BackdropLoader open={openBackdrop.open} />
+      {modal.open ? (
+        <ModalQhatu
+          open={modal.open}
+          callback={modal.callback}
+          title={modal.title}
+          subtitle={modal.subtitle}
+        />
+      ) : null}
     </>
   );
 };

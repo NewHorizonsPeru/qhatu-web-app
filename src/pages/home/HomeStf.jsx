@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import RickAndMortyService from '../../core/services/RickAndMortyService';
 import HomeStl from './HomeStl';
 
 const Home = () => {
@@ -9,7 +10,26 @@ const Home = () => {
     next: null,
   });
 
-  return <HomeStl characters={characters} />;
+  const getCharacters = async (apiUrl) => {
+    setCharacters({ loading: true });
+    const { prev, data, next } = await RickAndMortyService.getCharacters(
+      apiUrl
+    );
+    setCharacters({
+      loading: false,
+      prev: prev,
+      data: data,
+      next: next,
+    });
+  };
+
+  useEffect(() => {
+    getCharacters();
+  }, []);
+
+  return (
+    <HomeStl characters={characters} handleClickCharacters={getCharacters} />
+  );
 };
 
 export default Home;

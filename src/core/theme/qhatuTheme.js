@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme();
+const qhatuTheme = createTheme();
 
-export default theme;
+export default qhatuTheme;

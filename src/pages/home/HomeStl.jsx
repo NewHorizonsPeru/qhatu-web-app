@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
-const HomeStl = ({ characters }) => {
+const HomeStl = ({ characters, handleClickCharacters }) => {
   return (
     <>
       <>
@@ -19,7 +19,7 @@ const HomeStl = ({ characters }) => {
             <Button
               variant="contained"
               disabled={characters.prev === null}
-              onClick={() => {}}
+              onClick={() => handleClickCharacters(characters.prev)}
             >
               <FastRewindIcon />
             </Button>
@@ -28,7 +28,7 @@ const HomeStl = ({ characters }) => {
             <Button
               variant="contained"
               disabled={characters.next === null}
-              onClick={() => {}}
+              onClick={() => handleClickCharacters(characters.next)}
             >
               <FastForwardIcon />
             </Button>
